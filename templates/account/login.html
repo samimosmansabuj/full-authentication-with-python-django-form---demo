@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block body_content %}
+
+<form style="background-color: white; padding: 50px; width: 50%;" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit" class="btn btn-primary">Login</button>
+
+    <p><a href="{% url 'forget_password' %}" style="text-decoration: none;">Forget Password</a></p>
+
+  </form>
+{% endblock %}
+

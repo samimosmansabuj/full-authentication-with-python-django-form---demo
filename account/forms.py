@@ -45,3 +45,6 @@ class ResetPasswordForm(forms.Form):
     new_password2 = forms.CharField(label='New Confirm Passowrd', max_length=50, widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     
 
+class RegistrationVerificationForm(forms.Form):
+    otp = forms.CharField(max_length=6, label='OTP', widget=forms.NumberInput(attrs={'class': 'form-control'}))
+

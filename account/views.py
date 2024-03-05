@@ -4,6 +4,7 @@ from django.contrib.auth import login, update_session_auth_hash, logout
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Custom_User
+from django.contrib import messages
 import random
 
 
@@ -69,7 +70,7 @@ def forget_password(request):
                 
     return render(request, 'account/forget_password.html', {'form': form})
 
-from django.contrib import messages
+
 
 def reset_password(request):
     form = ResetPasswordForm()
@@ -82,10 +83,7 @@ def reset_password(request):
             
             stored_otp = request.session.get('forget_password_otp')
             stored_email = request.session.get('forget_password_email')
-            
-            print('otp type', type(otp))
-            print('stored otp type', type(stored_otp))
-            
+    
             if otp == stored_otp:
                 if new_password1 == new_password2:
                     user = Custom_User.objects.get(email=stored_email)
